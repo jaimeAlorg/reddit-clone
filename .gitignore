@@ -41,3 +41,6 @@
 # env
 /client/.env
 /server/.env
+
+# test sql
+/server/test.sql

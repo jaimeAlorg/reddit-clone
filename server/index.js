@@ -1,15 +1,17 @@
 const express = require("express");
 const cors = require("cors");
-const pool = require("./db");
-require("dotenv").config();
+const { json, urlencoded } = require("express");
+const auth = require("./routes/auth");
 
 const app = express();
-const port = 8080;
 
+app.use(json());
+app.use(urlencoded({ extended: true }));
 app.use(cors());
 
-const api = require("./routes/index");
-app.use("/api", api);
+const port = 8080;
+
+app.use("/auth", auth);
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
